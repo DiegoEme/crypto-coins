@@ -28,6 +28,19 @@
   color: #61dafb;
 }
 
+.table {
+  width: 100%;
+}
+
+.table td,
+.table th {
+  padding: 8px;
+}
+
+.table tr:hover {
+  background-color: #252c3b;
+  cursor: pointer;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

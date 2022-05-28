@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import CoinDetail from "./components/CoinDetail";
+import CoinTable from "./components/CoinTable";
+import useCoins from "./hooks/useCoins";
 
 function App() {
+  const { coins, isLoading } = useCoins();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CoinTable coins={coins} />} />
+          <Route path="/:id" element={<CoinDetail />} />
+        </Routes>
+        {isLoading && <div>Loading...</div>}
+      </BrowserRouter>
     </div>
   );
 }
